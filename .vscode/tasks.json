@@ -8,11 +8,25 @@
             "type": "shell",
             "command": "xelatex",
             "args": [
+                "-interaction",
+                "nonstopmode",
                 "-halt-on-error",
-                "-output-directory=out",
+                "-file-line-error",
+                "-output-directory=${workspaceFolder}/out",
                 "-jobname=${workspaceFolderBasename}",
-                "${file}"
+                "./main.tex"
             ],
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "options": {
+                "cwd": "./src/"
+            },
             "group": {
                 "kind": "build",
                 "isDefault": true
