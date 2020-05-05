@@ -12,7 +12,7 @@
                 "nonstopmode",
                 "-halt-on-error",
                 "-file-line-error",
-                "-output-directory=${workspaceFolder}/out",
+                "-output-directory=${workspaceFolder}/src/out",
                 "-jobname=${workspaceFolderBasename}",
                 "./main.tex"
             ],
