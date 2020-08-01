@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build PDF with XeLaTeX",
+            "label": "Clean Build All",
             "type": "shell",
             "command": "xelatex",
             "args": [
@@ -30,7 +30,118 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "dependsOn": "build1"
+        },
+        {
+            "label": "build1",
+            "type": "shell",
+            "command": "xelatex",
+            "args": [
+                "-interaction",
+                "nonstopmode",
+                "-halt-on-error",
+                "-file-line-error",
+                "-output-directory=${workspaceFolder}/src/out",
+                "-jobname=${workspaceFolderBasename}",
+                "./main.tex"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "options": {
+                "cwd": "./src/"
+            },
+            "group": "build",
+            "dependsOn": "Process References with BibTeX"
+        },
+        {
+            "label": "Process References with BibTeX",
+            "type": "shell",
+            "command": "bibtex",
+            "args": [
+                "out/${workspaceFolderBasename}"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "options": {
+                "cwd": "./src/"
+            },
+            "group": "build",
+            "dependsOn": "Build PDF with XeLaTeX"
+        },
+        {
+            "label": "Build PDF with XeLaTeX",
+            "type": "shell",
+            "command": "xelatex",
+            "args": [
+                "-interaction",
+                "nonstopmode",
+                "-halt-on-error",
+                "-file-line-error",
+                "-output-directory=${workspaceFolder}/src/out",
+                "-jobname=${workspaceFolderBasename}",
+                "./main.tex"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "options": {
+                "cwd": "./src/"
+            },
+            "group": "build",
+            "dependsOn": "createdirs",
+        },
+        {
+            "label": "createdirs",
+            "type": "shell",
+            "command": "(Get-ChildItem -Path .. -Directory -Exclude out).BaseName | ForEach-Object { New-Item -Path . -ItemType \"directory\" -Name $_ }",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "options": {
+                "cwd": "./src/out/"
+            },
+            "group": "build",
+            "dependsOn": "clean"
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "Remove-Item -Force -Recurse out; New-Item -ItemType \"directory\" -Name out",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "options": {
+                "cwd": "./src/"
+            },
+            "group": "build",
         }
     ]
 }
