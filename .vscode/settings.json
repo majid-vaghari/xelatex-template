@@ -1,0 +1,32 @@
+{
+    "editor.minimap.enabled": false,
+    "latex-workshop.bibtex-format.sort.enabled": true,
+    "latex-workshop.bibtex-format.sortby": [
+        "author",
+        "title",
+        "key"
+    ],
+    "latex-workshop.bibtex-format.surround": "Quotation marks",
+    "latex-workshop.bibtex-format.tab": "4 spaces",
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk 🔃",
+            "tools": [
+                "latexmk_rconly"
+            ]
+        },
+    ],
+    "files.associations": {
+        "latexmkrc": "perl",
+        ".latexmkrc": "perl"
+    },
+    "latex-workshop.chktex.enabled": true,
+    "latex-workshop.chktex.run": "onType",
+    "latex-workshop.intellisense.unimathsymbols.enabled": true,
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.latex.outDir": "../out",
+    "latex-workshop.docker.image.latex": "texlive/texlive",
+    "latex-workshop.latex.search.rootFiles.include": [
+        "src/main.tex"
+    ],
+}

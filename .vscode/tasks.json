@@ -13,6 +13,9 @@
                 "showReuseMessage": true,
                 "clear": false
             },
+            "options": {
+                "cwd": "src"
+            },
             "group": {
                 "kind": "build",
                 "isDefault": true

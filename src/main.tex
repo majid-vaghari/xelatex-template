@@ -1,11 +1,22 @@
-\documentclass{article}
+% !TeX root = ./main.tex
+\documentclass[12pt]{article}
 
-\title{}
-\author{}
-\date{}
+\input{config/import-packages.tex}
+
+\input{config/set-fonts.tex}
+
+\input{config/define-commands.tex}
 
 \begin{document}
-\maketitle
+\maketitle % remove if you don't want a title
 
-Hello, world!
+\tableofcontents % remove if you don't want ToC
+
+% inclue or input chapters
+% it is recomended to create a "chapters" folder under "src"
+% and put your chapters there; then include them here.
+
+% \bibliographystyle{}
+% \bibliography{references.bib}
+
 \end{document}

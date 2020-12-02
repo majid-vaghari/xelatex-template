@@ -11,5 +11,5 @@ Install TeXLive or MacTeX.
 
 Simple. Run:
 ```bash
-$ latexmk
+$ ( cd src && latexmk )
 ```
